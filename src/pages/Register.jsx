@@ -27,48 +27,81 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500">
-      <div className="bg-white p-6 rounded-xl shadow-xl w-80">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-6">
+      <div className="w-full max-w-md">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">Execution Tracker</h1>
+          <p className="text-purple-300 text-sm">Create your account and start tracking</p>
+        </div>
 
-        <h1 className="text-2xl font-semibold mb-4 text-center">Create Account</h1>
+        {/* Card */}
+        <div className="bg-white rounded-xl shadow-xl p-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h2>
 
-        <input
-          className="border rounded p-2 w-full mb-2"
-          placeholder="Email"
-          onChange={e=>setEmail(e.target.value)}
-          onKeyDown={e=>e.key==="Enter" && signup()}
-        />
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
+                onKeyDown={e=>e.key==="Enter" && signup()}
+                className="w-full border-2 border-purple-200 rounded-lg px-4 py-3 text-lg focus:outline-none focus:border-purple-500 transition"
+                placeholder="Enter your email"
+              />
+            </div>
 
-        <input
-          className="border rounded p-2 w-full mb-3"
-          type="password"
-          placeholder="Password"
-          onChange={e=>setPassword(e.target.value)}
-          onKeyDown={e=>e.key==="Enter" && signup()}
-        />
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={e=>setPassword(e.target.value)}
+                onKeyDown={e=>e.key==="Enter" && signup()}
+                className="w-full border-2 border-purple-200 rounded-lg px-4 py-3 text-lg focus:outline-none focus:border-purple-500 transition"
+                placeholder="Create a password"
+              />
+            </div>
 
-        <button onClick={signup} className="bg-emerald-600 hover:bg-emerald-700 text-white w-full py-2 rounded mb-2">
-          Sign Up
-        </button>
+            <button
+              onClick={signup}
+              className="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white px-8 py-4 rounded-lg font-bold transition shadow-lg mt-2"
+            >
+              Create Account
+            </button>
 
-        <button
-          onClick={googleSignup}
-          className="flex items-center justify-center gap-3 w-full border border-gray-300 bg-white py-2 rounded-lg shadow-sm hover:bg-gray-50 transition"
-        >
-          <img
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-            alt="Google"
-            className="w-5 h-5"
-          />
-          <span className="text-gray-700 font-medium">
-            Continue with Google
-          </span>
-        </button>
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-4 bg-white text-gray-500 font-semibold">OR</span>
+              </div>
+            </div>
 
+            <button
+              onClick={googleSignup}
+              className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-purple-300 bg-white py-3 rounded-lg font-semibold transition shadow-sm hover:shadow-md"
+            >
+              <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              <span className="text-gray-700">
+                Continue with Google
+              </span>
+            </button>
+          </div>
 
-        <p className="text-center text-sm">
-          Already have account? <Link to="/" className="text-emerald-600">Login</Link>
-        </p>
+          <p className="text-center text-sm text-gray-600 mt-6">
+            Already have an account?{" "}
+            <Link to="/" className="text-purple-600 hover:text-purple-700 font-semibold transition">
+              Sign in
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
